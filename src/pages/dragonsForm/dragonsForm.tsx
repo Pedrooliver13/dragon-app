@@ -27,7 +27,8 @@ export const DragonsForm = (): ReactElement => {
   const { id } = useParams();
 
   const {
-    preparedValues,
+    dragonValues,
+    preparedDragonValues,
     onGetDragonById,
     onCreateDragon,
     onUpdateDragon,
@@ -39,7 +40,7 @@ export const DragonsForm = (): ReactElement => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({
-    values: preparedValues,
+    values: preparedDragonValues,
     resolver: zodResolver(schema),
   });
 
@@ -53,7 +54,7 @@ export const DragonsForm = (): ReactElement => {
       onUpdateDragon({
         ...preparedData,
         id,
-        createdAt: preparedValues?.createdAt,
+        createdAt: dragonValues?.createdAt,
       });
       return;
     }
@@ -112,7 +113,7 @@ export const DragonsForm = (): ReactElement => {
           <Input
             id="createdAt"
             label="Data de Criação"
-            value={preparedValues?.createdAt}
+            value={preparedDragonValues?.createdAt}
             disabled
           />
         )}

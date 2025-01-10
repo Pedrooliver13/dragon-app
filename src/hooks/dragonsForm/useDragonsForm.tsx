@@ -19,7 +19,7 @@ export const useDragonsForm = () => {
   const [dragonValues, setDragonValues] = useState<IDragon | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const preparedValues = useMemo(
+  const preparedDragonValues = useMemo(
     () => ({
       id: dragonValues?.id || '',
       name: dragonValues?.name || '',
@@ -81,7 +81,8 @@ export const useDragonsForm = () => {
   );
 
   return {
-    preparedValues,
+    dragonValues,
+    preparedDragonValues,
     onGetDragonById,
     onCreateDragon,
     onUpdateDragon,
